@@ -91,5 +91,64 @@ HMap.add_layer(countriesLayer)
 HMap.add_layer(riversLayerItaly)
 HMap.add_layer(citiesLayer)
 
+printer = HPrinter(iface)
+
+mapProperties = {
+    "x": 5,
+    "y": 25,
+    "width": 285,
+    "height": 180,
+    "extent": [10, 44, 12, 46],
+    "frame": True
+}
+printer.add_map(**mapProperties)
+
+labelProperties = {
+    "x": 120,
+    "y": 10,
+    "text": "Such a nice map",
+    "font_size": 28,
+    "bold": True,
+    "italic": False
+}
+printer.add_label(**labelProperties)
+
+legendProperties = {
+    "x": 215,
+    "y": 30,
+    "width": 150,
+    "height": 100,
+    "max_symbol_size": 3
+}
+printer.add_legend(**legendProperties)
+
+scalebarProperties = {
+    "x": 10,
+    "y": 190,
+    "units": "km",
+    "segments": 4,
+    "unit_per_segment": 10,
+    "style": "Single Box",
+    "font_size": 12
+}
+printer.add_scalebar(**scalebarProperties)
+
+
+
+
+
+
+# import datetime 
+# print(datetime.datetime.now()) "YYYY-MM-DD HH:MM:SS"
+
+
+outputPdf = f"{tmpFolder}/test.pdf"
+printer.dump_to_pdf(outputPdf)
+
+outputPng = f"{tmpFolder}/test.png"
+printer.dump_to_image(outputPng)
+
+
+
 
 
